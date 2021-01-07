@@ -1,0 +1,9 @@
+Hi User
+
+These are the stocks whose volume has changed significantly :
+
+{table}
+
+
+Regards 
+RSI Calculator Team 
