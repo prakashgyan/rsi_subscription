@@ -54,6 +54,6 @@ def send_mail(data):
 
         # send the message via the server set up earlier.
         s.sendmail(MY_ADDRESS, to_email, msg.as_string())
-        print('Email Sent')
+        print(f'Email Sent to {to_email}')
 
     del msg
