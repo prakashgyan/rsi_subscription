@@ -22,7 +22,7 @@ def insert_df(df,table_name,append_replace = 'append'):
 def read_sql_db(table_name,column_names):
     conn= sqlite3.connect('stcoks.db')
     c = conn.cursor()
-    c.execute(f"select * from {table_name} group by 1 having count(1) = 1")
+    c.execute(f"select * from {table_name} ")
     return pd.DataFrame(c.fetchall(),columns=column_names)
 
 def delete_table(table_name):
