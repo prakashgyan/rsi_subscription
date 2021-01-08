@@ -24,7 +24,7 @@ def read_sql_db(table_name,column_names):
     with engine.connect() as conn:
 
         # c = conn.cursor()
-        result = conn.execute(f"select * from {table_name} group by YahooCD having count(YahooCD) = 1")
+        result = conn.execute(f"select * from {table_name} s group by s.YahooCD having count(s.YahooCD) = 1")
         return pd.DataFrame(result ,columns=column_names)
 
 def delete_table(table_name):
