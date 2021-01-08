@@ -16,7 +16,7 @@ def checking():
         # create_table('stocks',['S_No','YahooCD','Vol_Ratio','VR_Purchase'],['NUMERIC','text','float','text'])
         insert_df(df,'stocks')
         sql_df = read_sql_db('stocks',column_names)
-        # print(df, sql_df)
+        print(df, sql_df)
         if len(sql_df):
             send_mail(sql_df)
 
