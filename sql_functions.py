@@ -22,8 +22,8 @@ def insert_df(df,table_name,append_replace = 'append'):
 def read_sql_db(table_name,column_names):
     conn= sqlite3.connect('stcoks.db')
     c = conn.cursor()
-    c.execute(f"select * from {table_name} group by YahooCD having count(yahooCD) = 1")
-    return pd.DataFrame(c.fetchall())
+    c.execute(f"select * from {table_name} ")
+    return pd.DataFrame(c.fetchall(),columns=column_names)
 
 def delete_table(table_name):
     conn= sqlite3.connect('stcoks.db')
