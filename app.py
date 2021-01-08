@@ -18,8 +18,8 @@ def checking():
         insert_df(df,'stocks')
         sql_df = read_sql_db('stocks',column_names)
         print(df, sql_df)
-        # if len(sql_df):
-        #     send_mail(sql_df)
+        if len(sql_df):
+            send_mail(sql_df)
 
 
 if __name__ == '__main__':
