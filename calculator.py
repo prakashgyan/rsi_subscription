@@ -1,9 +1,6 @@
 import yfinance as yf
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
-import time
-import timeit
 
 #read Yahoo codes from file
 companies = pd.read_csv('Yahoo_Company_codes.csv', names=['yahoocd', 'Description'],skiprows=1)
@@ -28,7 +25,7 @@ def get_table(volume_ratio_cutoff, df = companies):
     df = pd.concat([df, rsi_volume],axis=1 )
     df['action'] = df.vol_ratio.apply(lambda x: 'BUY/SELL' if x > volume_ratio_cutoff else np.nan)
     df = df[df.vol_ratio > volume_ratio_cutoff ]
-    return df
+    return df, max(df.ratio_date)
 
 # #for testing this code should be commented before importing
 # if __name__ == '__main__':

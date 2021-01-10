@@ -11,7 +11,6 @@ def create_table(table_name , column_names , data_types):
     with engine.connect() as conn:
         table_metadata = ', '.join([ ' '.join([x,y]) for x,y in zip(column_names,data_types)])
         sql_commmand = f"CREATE TABLE IF NOT EXISTS {table_name} ({table_metadata})"
-        print(sql_commmand)
         conn.execute(text(sql_commmand))
         # conn.commit()
 
