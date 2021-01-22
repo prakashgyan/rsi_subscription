@@ -25,10 +25,10 @@ def get_table(volume_ratio_cutoff, df = companies):
     df = pd.concat([df, rsi_volume],axis=1 )
     df['action'] = df.vol_ratio.apply(lambda x: 'BUY/SELL' if x > volume_ratio_cutoff else np.nan)
     df = df[df.vol_ratio > volume_ratio_cutoff ]
-    return df, max(df.ratio_date)
+    return df, max(df.ratio_date.dt.strftime('%Y-%m-%d'))
 
 # #for testing this code should be commented before importing
 # if __name__ == '__main__':
-#     timea = time.time()
+#     # timea = time.time()
 #     print(get_table(1))
-#     print(f'Total Time taken : {time.time()-timea}')    
+#     # print(f'Total Time taken : {time.time()-timea}')    

@@ -1,11 +1,7 @@
 # import the smtplib module. It should be included in Python by default
-from calculator import get_table 
 import smtplib
 from tabulate import tabulate
-import os
-
-MY_ADDRESS = os.environ["MY_EMAIL_ADDRESS"]
-PASSWORD = os.environ["MY_EMAIL_PASSWORD"]
+from metadata import *
 
 # set up the SMTP server
 s = smtplib.SMTP(host='smtp.office365.com', port=587)
@@ -34,10 +30,10 @@ def read_text(filename1,filename2):
 def send_mail(data):
     text, html = read_text('template.txt','template.html')
 
-    text = text.format(table=tabulate(data, headers=['S.No', 'YahooCD','Vol_Ratio','VR Purchase'],
+    text = text.format(table=tabulate(data, headers=column_names,
             tablefmt="grid",colalign=("center","center","center","center")))
 
-    html = html.format(table=tabulate(data, headers=['S.No', 'YahooCD','Vol_Ratio','VR Purchase'],
+    html = html.format(table=tabulate(data, headers=column_names,
             tablefmt="html",colalign=("center","center","center","center")))
 
     msg = MIMEMultipart('alternative', None, [MIMEText(text), MIMEText(html,'html')])       # create a message
