@@ -1,10 +1,15 @@
 import os
-# Outlook 
-MY_ADDRESS = os.environ["MY_EMAIL_ADDRESS"]
-PASSWORD = os.environ["MY_EMAIL_PASSWORD"]
 
-#database
-DATABASE_URL = os.environ['DATABASE_URL']
+try:
+        
+    # Outlook 
+    MY_ADDRESS = os.environ["MY_EMAIL_ADDRESS"]
+    PASSWORD = os.environ["MY_EMAIL_PASSWORD"]
+
+    #database
+    DATABASE_URL = os.environ['DATABASE_URL']
+except : 
+    print("Exception in loading Environment Variables")
 
 #app
 weekends = ['Saturday', 'Sunday']
