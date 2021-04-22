@@ -3,10 +3,13 @@ import smtplib
 from tabulate import tabulate
 from metadata import *
 
-# set up the SMTP server
-s = smtplib.SMTP(host='smtp.office365.com', port=587)
-s.starttls()
-s.login(MY_ADDRESS, PASSWORD)
+try:
+    # set up the SMTP server
+    s = smtplib.SMTP(host='smtp.office365.com', port=587)
+    s.starttls()
+    s.login(MY_ADDRESS, PASSWORD)
+except smtplib.SMTPAuthenticationError:
+    print("Login to STMP server Failed ")
 
 # import necessary packages
 from email.mime.multipart import MIMEMultipart

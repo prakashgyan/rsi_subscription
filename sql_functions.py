@@ -34,17 +34,20 @@ def delete_table(table_name):
     with engine.connect() as conn:
         # c = conn.cursor()
         conn.execute(text(f'DROP TABLE IF EXISTS {table_name}'))
-        print('table_deleted')
+        print(f'Table Deleted: {table_name}')
         # conn.commit()
         # conn.close()
 
+def sql_execute_query(query, column_names):
+    with engine.connect() as conn:
+        result = conn.execute(text(query))
+        return pd.DataFrame(result, columns=column_names)
+    
 
 
-# c.execute('''CREATE TABLE stocks
-#              (date text, YahooCD text, Vol_ratio float, VR_purchage text)''')
+def truncate_table(table_name):
+    with engine.connect() as conn:
+        # c = conn.cursor()
+        conn.execute(text(f'TRUNCATE TABLE {table_name}'))
+        print(f'Table Truncated : {table_name}')
 
-# c.execute("INSERT INTO stocks VALUES ('2006-01-05','BAJFINANCE.NS',0.737843,'nan')")
-# c.execute("select * from stocks")
-# print(c.fetchall())
-# conn.commit()
-# conn.close()
