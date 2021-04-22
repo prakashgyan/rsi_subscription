@@ -7,6 +7,11 @@ from metadata import *
 
 engine = create_engine(DATABASE_URL)
 
+# Query for calculating new rows that has not been mailed already
+sql_query = """SELECT DISTINCT HVS.yahoocd, HVS.vol_ratio, HVS.ratio_date, HVS."action" FROM HIGH_VOLUME_STOCKS HVS 
+                                                FULL OUTER JOIN SENT_DATA SD ON HVS.YAHOOCD = SD.YAHOOCD 
+                                                WHERE SD.yahoocd IS NULL"""
+
 def create_table(table_name , column_names , data_types):
     with engine.connect() as conn:
         table_metadata = ', '.join([ ' '.join([x,y]) for x,y in zip(column_names,data_types)])
